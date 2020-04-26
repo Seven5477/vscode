@@ -1,10 +1,39 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+    </head>
         <body>
-            <div id="nav">
-                hello world!
+            <div id="app">
+                <div class="nav" v-bind:id="bg1">
+                    {{msg}}
+                </div>
+                <div class="nav"> 
+                    {{ count }}   
+                    <div v-html="template">
+                    </div>  
+                    <a :href="url">百度</a>
+                    <!--<a v-bind:href="url">百度</a>-->
+                    <!--<button type="button" v-on:click="submit()">coun增加</button>-->
+                    <button type="button" @click="submit()">coun增加</button>
+                </div>
             </div>
         </body>
-    </head>
+   <script>
+       new Vue({
+           el:'#app',
+           data:{
+               bg1:'app-bind',
+               msg:'hello vue',
+               count:0,
+               url:'http://www.baidu.com',
+               template:'<div style="color:blue">hello template</div>'
+           },
+           methods:{
+               submit(){
+                   this.count ++
+               }
+           }
+       })
+   </script>
 </html>
